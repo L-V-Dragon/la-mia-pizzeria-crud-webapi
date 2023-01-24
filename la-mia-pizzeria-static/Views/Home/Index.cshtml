@@ -34,12 +34,12 @@
 
         function searchPizze() {
             let stringaDiRicerca = document.getElementById('input_search').value;
-            loadArticoli(stringaDiRicerca);
+            loadPizze(stringaDiRicerca);
         }
 
         function loadPizze(searchString) {
 
-            axios.get('/api/pizze', {
+            axios.get('/api/pizzone', {
                 params: {
                     search: searchString
                 }
@@ -63,12 +63,12 @@
                             `
                                     <div class="col-12 col-md-4 p-2">
                                         <div class="card post h-100">
-                                        <a href="/Home/Details/${pizza.Id}">
-                                            <img src="${pizza.Foto}" class="card-img-top" alt="...">
+                                        <a href="/Home/Details/${pizza.id}">
+                                            <img src="${pizza.foto}" class="card-img-top" alt="...">
                                             <div class="card-body">
-                                                <h5 class="card-title">${pizza.Name}</h5>
-                                                <p class="card-text">${pizza.Descrizione}</p>
-                                                        <p class="card-text">${pizza.Prezzo}</p>
+                                                <h5 class="card-title">${pizza.nome}</h5>
+                                                <p class="card-text">${pizza.descrizione}</p>
+                                                        <p class="card-text">${pizza.prezzo}</p>
                                             </div>
                                         </a>
                                         </div>
