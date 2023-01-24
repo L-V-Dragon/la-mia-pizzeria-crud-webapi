@@ -78,11 +78,11 @@ namespace la_mia_pizzeria_static.Controllers
                 {
                     formData.Pizza.Toppings = new List<Topping>();
 
-                    foreach (string tagId in formData.ToppingsSelectedFromMultipleSelect)
+                    foreach (string toppingId in formData.ToppingsSelectedFromMultipleSelect)
                     {
-                        int tagIdIntFromSelect = int.Parse(tagId);
+                        int toppingIdIntFromSelect = int.Parse(toppingId);
 
-                        Topping topping = db.Toppings.Where(tagDb => tagDb.Id == tagIdIntFromSelect).FirstOrDefault();
+                        Topping topping = db.Toppings.Where(pizza => pizza.Id == toppingIdIntFromSelect).FirstOrDefault();
 
                         
                         formData.Pizza.Toppings.Add(topping);
@@ -164,11 +164,11 @@ namespace la_mia_pizzeria_static.Controllers
                     if (formData.ToppingsSelectedFromMultipleSelect != null)
                     {
 
-                        foreach (string tagId in formData.ToppingsSelectedFromMultipleSelect)
+                        foreach (string toppingId in formData.ToppingsSelectedFromMultipleSelect)
                         {
-                            int tagIdIntFromSelect = int.Parse(tagId);
+                            int toppingIdIntFromSelect = int.Parse(toppingId);
 
-                            Topping topping = db.Toppings.Where(tagDb => tagDb.Id == tagIdIntFromSelect).FirstOrDefault();
+                            Topping topping = db.Toppings.Where(pizza => pizza.Id == toppingIdIntFromSelect).FirstOrDefault();
 
 
                             pizzaToUpdate.Toppings.Add(topping);
@@ -189,12 +189,12 @@ namespace la_mia_pizzeria_static.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
+       
         public IActionResult Delete(int id)
         {
             using (PizzaContext db = new PizzaContext())
             {
-                Pizza pizzaToDelete = db.Pizze.Where(post => post.Id == id).FirstOrDefault();
+                Pizza pizzaToDelete = db.Pizze.Where(pizza => pizza.Id == id).FirstOrDefault();
 
                 if (pizzaToDelete != null)
                 {
