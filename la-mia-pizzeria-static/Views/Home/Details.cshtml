@@ -13,7 +13,7 @@
 
         const id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
        
-        axios.get(`http://localhost:7148/api/pizzone/${id}`).then((res) => {
+        axios.get(`https://localhost:7148/api/pizzone/${id}`).then((res) => {
             let pizza = res.data;
             console.log('pizza ricevuta', pizza)
 
